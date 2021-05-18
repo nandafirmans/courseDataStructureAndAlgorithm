@@ -1,6 +1,6 @@
 # Big O Notation
 
-_Big O Notation to describe the performance of algorithm_
+_Big O Notation to describe the performance of algorithm._
 
 We use Big O to describe the performance of an algorithm, and <mark>this helps us to determine if an given algorithmn scalable or not.</mark> Which basically means is an algorithm going to scale well as the input grows really large.
 
@@ -49,7 +49,7 @@ So just because your code execute quickly doesn't mean it's going to perform wel
 
     ```java
      public void log(int[] numbers) {
-       // O(1 + n + 1) ➡ simplyfy ➡ O(2 + n) ➡ drop the constant ➡ O(n)
+       // O(1 + n + 1) ➡ simplify ➡ O(2 + n) ➡ drop the constant ➡ O(n)
 
        System.out.println(numbers[0]); // O(1)
 
@@ -64,7 +64,7 @@ So just because your code execute quickly doesn't mean it's going to perform wel
 
     ```java
      public void log(int[] numbers) {
-       // O(n + n) or O(2n) ➡ simplyfy ➡ O(n)
+       // O(n + n) or O(2n) ➡ simplify ➡ O(n)
 
        for (int number : numbers) // O(n)
          System.out.println(number);
@@ -78,12 +78,61 @@ So just because your code execute quickly doesn't mean it's going to perform wel
 
     ```java
      public void log(int[] numbers, String[] names) {
-       // O(n + m) ➡ simplyfy ➡ O(n)
+       // O(n + m) ➡ simplify ➡ O(n)
 
        for (int number : numbers) // O(n)
          System.out.println(number);
 
        for (String name : names) // O(m)
          System.out.println(name);
+     }
+    ```
+
+-   ### **O(n^2)**
+
+    Below we have nested loops. This is the algorithm that we use for printing combinations items in an array. So we need to use the runtime complexity here, well let's find out..
+
+    In outter loop, we iterating over input array `int[] numbers`, so here we have `O(n)`. Now each iteration, once again iterating over all the items in array `int[] numbers` another example of `O(n)`. So the runtime complexity of the method below is `O(n*n)` or `O(n^2)`
+
+    ![diagram-1](https://snipboard.io/ubwaSo.jpg)
+
+    We say <mark>this algorithm runs in quadratic time.</mark> As you can see in this diagram above.
+    Algorithms that run in the `O(n^2)`, is slower than algorithms that run in `O(n)`. And of course this depends on the size of the input.
+
+    ```java
+     public void log(int[] numbers) {
+       // O(n * n) or O(n ^ 2)
+
+       for (int first : numbers) // O(n)
+         for (int second : numbers) // O(n)
+           System.out.println(first + ", " + second);
+     }
+    ```
+
+    What if we have another loop before or after this loop. The `n ^ 2` number is always greater than `n`, So in this expression `O(n + n ^ 2)`, `n ^ 2` is always grows faster than `n`, so here we can drop `n`, and conclude that this method below runs in `O(n ^ 2)`.
+
+    ```java
+     public void log(int[] numbers) {
+       // O(n + n ^ 2) ➡ simplify ➡ O(n ^ 2)
+
+       for (int number : numbers) // O(n)
+         System.out.println(number);
+
+       for (int first : numbers) // O(n)
+         for (int second : numbers) // O(n)
+           System.out.println(first + ", " + second);
+     }
+    ```
+
+    What if we had another nested another nested loop just like example below. The runtime complexity is now `O(n ^ 3)`. As you can imagine, this algorithm gets far more slower than `O(n ^ 2)`.
+
+    ```java
+     public void log(int[] numbers) {
+       // O(n ^ 3)
+
+       for (int first : numbers) // O(n)
+         for (int second : numbers) // O(n)
+           for (int third : numbers) // O(n)
+             System.out.println(first + ", " + second + ", " + third);
      }
     ```

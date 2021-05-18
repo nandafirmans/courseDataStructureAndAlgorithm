@@ -1,6 +1,6 @@
-package com.bigonotation;
+package com.nocoffeeneedded;
 
-public class Main {
+public class BigONotation {
   public static void main(String[] args) {
     // write your code here
   }
@@ -23,7 +23,7 @@ public class Main {
   }
 
   public void log4(int[] numbers) {
-    // O(1 + n + 1) ➡ simplyfy ➡ O(2 + n) ➡ drop the constant ➡ O(n)
+    // O(1 + n + 1) ➡ simplify ➡ O(2 + n) ➡ drop the constant ➡ O(n)
 
     System.out.println(numbers[0]); // O(1)
 
@@ -34,7 +34,7 @@ public class Main {
   }
 
   public void log5(int[] numbers) {
-    // O(n + n) or O(2n) ➡ simplyfy ➡ O(n)
+    // O(n + n) or O(2n) ➡ simplify ➡ O(n)
 
     for (int number : numbers) // O(n)
       System.out.println(number);
@@ -44,12 +44,40 @@ public class Main {
   }
 
   public void log6(int[] numbers, String[] names) {
-    // O(n + m) ➡ simplyfy ➡ O(n)
+    // O(n + m) ➡ simplify ➡ O(n)
 
     for (int number : numbers) // O(n)
       System.out.println(number);
 
     for (String name : names) // O(m)
       System.out.println(name);
+  }
+
+  public void log8(int[] numbers) {
+    // O(n * n) or O(n ^ 2)
+
+    for (int first : numbers) // O(n)
+      for (int second : numbers) // O(n)
+        System.out.println(first + ", " + second);
+  }
+
+  public void log9(int[] numbers) {
+    // O(n + n ^ 2) ➡ simplify ➡ O(n ^ 2)
+
+    for (int number : numbers) // O(n)
+      System.out.println(number);
+
+    for (int first : numbers) // O(n)
+      for (int second : numbers) // O(n)
+        System.out.println(first + ", " + second);
+  }
+
+  public void log10(int[] numbers) {
+    // O(n ^ 3)
+
+    for (int first : numbers) // O(n)
+      for (int second : numbers) // O(n)
+        for (int third : numbers) // O(n)
+          System.out.println(first + ", " + second + ", " + third);
   }
 }
