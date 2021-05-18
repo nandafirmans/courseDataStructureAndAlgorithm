@@ -109,7 +109,7 @@ So just because your code execute quickly doesn't mean it's going to perform wel
      }
     ```
 
-    What if we have another loop before or after this loop. The `n ^ 2` number is always greater than `n`, So in this expression `O(n + n ^ 2)`, `n ^ 2` is always grows faster than `n`, so here we can drop `n`, and conclude that this method below runs in `O(n ^ 2)`.
+    What if we have another loop before or after this loop. The `n^2` number is always greater than `n`, So in this expression `O(n+n^2)`, `n^2` is always grows faster than `n`, so here we can drop `n`, and conclude that this method below runs in `O(n^2)`.
 
     ```java
      public void log(int[] numbers) {
@@ -124,7 +124,7 @@ So just because your code execute quickly doesn't mean it's going to perform wel
      }
     ```
 
-    What if we had another nested another nested loop just like example below. The runtime complexity is now `O(n ^ 3)`. As you can imagine, this algorithm gets far more slower than `O(n ^ 2)`.
+    What if we had another nested another nested loop just like example below. The runtime complexity is now `O(n^3)`. As you can imagine, this algorithm gets far more slower than `O(n^2)`.
 
     ```java
      public void log(int[] numbers) {
