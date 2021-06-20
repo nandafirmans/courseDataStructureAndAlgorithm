@@ -4,6 +4,7 @@ package com.nocoffeeneedded;
 // Array are the simplest data structures and we use them to store a list of item-
 // like a list of numbers, string, object and literally anything.
 // this item stored sequentially on the memory.
+
 public class Array {
     public int[] items;
     public int count;
@@ -17,7 +18,7 @@ public class Array {
         // so the run time complexity of this method is O(n)
 
         if (items.length == count) {
-            int[] newItems = new int[count * 2];
+            var newItems = new int[count * 2];
 
             for (int i = 0; i < count; i++) // O(n)
                 newItems[i] = items[i];
@@ -53,8 +54,8 @@ public class Array {
     }
 
     public void intersect(Array array) {
-        int sumCount = count + array.count;
-        int[] newItems = new int[sumCount];
+        var sumCount = count + array.count;
+        var newItems = new int[sumCount];
         for (int i = 0; i < count; i++) // O(n)
             newItems[i] = items[i];
 
@@ -69,8 +70,8 @@ public class Array {
     }
 
     public void reverse() {
-        int[] newItems = new int[count];
-        int newItemIndex = 0;
+        var newItems = new int[count];
+        var newItemIndex = 0;
 
         for (int i = count - 1; i >= 0; i--) { // O(n)
             newItems[newItemIndex] = items[i];
@@ -84,8 +85,8 @@ public class Array {
         if (index >= count || index < 0)
             throw new IllegalArgumentException();
 
-        int newCount = count + 1;
-        int[] newItems = new int[newCount];
+        var newCount = count + 1;
+        var newItems = new int[newCount];
 
         for (int i = 0; i < newCount; i++)
             if (i == index)
