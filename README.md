@@ -2,7 +2,7 @@
 
 _Big O Notation to describe the performance of algorithm._
 
-We use Big O to describe the performance of an algorithm, and <mark>this helps us to determine if an given algorithmn scalable or not.</mark> Which basically means is an algorithm going to scale well as the input grows really large.
+**We use Big O to describe the performance of an algorithm, and this helps us to determine if an given algorithmn scalable or not. Which basically means <mark>is an algorithm going to scale well as the input grows really large.</mark>**
 
 So just because your code execute quickly doesn't mean it's going to perform well when you give it a large data set. So that's why we use the Big O Notation to describe the performance of an algorithm
 
@@ -136,3 +136,34 @@ So just because your code execute quickly doesn't mean it's going to perform wel
              System.out.println(first + ", " + second + ", " + third);
      }
     ```
+
+-   ### **O(log n)**
+
+    Another growth rate we're going to talk about is logarithmic growth, with big O of log n. Here's the logatrithmic curve, now compare with linear curve.
+
+    As you can see the linear grows at the same rate, but the logarithmic curve slows down at the some point. So algorithm thats run in logarithmic time is more efficient and more scalable.
+
+    ![diagram-2](https://snipboard.io/kwLK0n.jpg)
+
+    Let's say we have an array of sorted numbers from one to ten, and we wan't to find the number 10.
+    we have two example here, linear search and binary search:
+
+    -   Linear Search
+        This is called linear search because it's run in linear time. In the worst case scenario, if the number we're looking for is at the end of an array we have to inspect every cell in this array to find a target number.
+        The more array we have the longer this operation going to take the run time of this algorithm increases linearly and in direct proportion with the size of the input array.
+
+        ![linear search](https://i.imgur.com/4Fd3nom.gif)
+
+    -   Binary Search
+        This algorithm run in logarithmic time. It's much faster than linear search. Assuming the array sorted we start off by looking the middle item. is this smaller or greater by the value we looking for? in this case our target number is 10, in every step we search by narrowing down by half.
+
+        ![binary search](https://i.imgur.com/KhMx9iT.gif)
+
+-   ### **O(2^n)**
+
+    The Exponential growth it's the opposite of logarithmic growth, algorithm that runs in exponential time it's not scalable at all it will become very slow very soon.
+
+    ![diagram-3](https://snipboard.io/GOHliI.jpg)
+
+-   ### **Summary Diagram**
+    ![summary-diagram](https://snipboard.io/J4qYKl.jpg)
