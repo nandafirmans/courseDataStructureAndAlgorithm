@@ -1,5 +1,6 @@
 package com.nocoffeeneedded;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 // Linked lists are probably the most commonly used data structures after array.
@@ -12,6 +13,7 @@ public class LinkedList {
     private static class Node {
         private final Object value;
         private Node next;
+        // private Node prev;
 
         public Node(Object value) {
             this.value = value;
@@ -21,7 +23,6 @@ public class LinkedList {
     private Node first;
     private Node last;
     private int size;
-
 
     public boolean isEmpty() {
         return first == null;
@@ -33,6 +34,7 @@ public class LinkedList {
         if (isEmpty())
             first = last = node;
         else {
+            // first.prev = node;
             node.next = first;
             first = node;
         }
@@ -46,6 +48,7 @@ public class LinkedList {
         if (isEmpty())
             first = last = node;
         else {
+            // node.prev = last;
             last.next = node;
             last = node;
         }
@@ -60,10 +63,13 @@ public class LinkedList {
         if (isSingleItem())
             first = last = null;
         else {
-            // if we directly delete the first element, it would not be deleted by the java garbage collector,
+            // if we directly delete the first element, it would not be deleted by the java
+            // garbage collector,
             // because the first element pointing to the second element and so on.
-            // so we needs to save the second element before delete the first element, by that we are not losing track.
+            // so we needs to save the second element before delete the first element, by
+            // that we are not losing track.
             var second = first.next;
+            // second.prev = null;
             first.next = null;
             first = second;
         }
@@ -80,9 +86,11 @@ public class LinkedList {
             first = last = null;
         else {
             var prevNode = getPreviousOf(last);
-            if (prevNode == null) return;
+            if (prevNode == null)
+                return;
 
             last = prevNode;
+            // last = last.prev;
             last.next = null;
         }
 
@@ -107,7 +115,8 @@ public class LinkedList {
         // O(n)
         var cursor = first;
         for (int i = 0; cursor != null; i++) {
-            if (cursor.value == value) return i;
+            if (cursor.value == value)
+                return i;
             cursor = cursor.next;
         }
         return -1;
@@ -118,15 +127,11 @@ public class LinkedList {
         return indexOf(value) != -1;
 
         /*
-        var cursor = first;
-        while (cursor != null) {
-            if (cursor.value == value)
-                return true;
-            cursor = cursor.next;
-        }
-
-        return false;
-        */
+         * var cursor = first; while (cursor != null) { if (cursor.value == value)
+         * return true; cursor = cursor.next; }
+         *
+         * return false;
+         */
     }
 
     public int size() {
@@ -134,14 +139,8 @@ public class LinkedList {
         return size;
 
         /*
-        // O(n)
-        var result = 0;
-        var cursor = first;
-        while (cursor != null) {
-            result++;
-            cursor = cursor.next;
-        }
-        return result;
+         * // O(n) var result = 0; var cursor = first; while (cursor != null) {
+         * result++; cursor = cursor.next; } return result;
          */
     }
 
@@ -156,6 +155,68 @@ public class LinkedList {
         }
 
         return array;
+    }
+
+    public void reversed() {
+        if (isEmpty())
+            return;
+
+        var previous = first;
+        var current = first.next;
+        while (current != null) {
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        last = first;
+        last.next = null;
+        first = previous;
+
+        // var list = new LinkedList();
+        // var cursorLast = first;
+        // while (cursorLast != null) {
+        // list.addFirst(cursorLast.value);
+        // cursorLast = cursorLast.next;
+        // }
+        // first = list.first;
+        // last = list.last;
+    }
+
+    public Object getKthFromTheEnd(int k) {
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        var a = first;
+        var b = first;
+
+        for (var i = 0; i < k - 1; i++) {
+            b = b.next;
+            if (b == null)
+                throw new IllegalArgumentException();
+        }
+
+        while (b != last) {
+            a = a.next;
+            b = b.next;
+        }
+
+        return a.value;
+    }
+
+    public void printMiddle() {
+        var a = first;
+        var b = first;
+        while (b != last && b.next != last) {
+            b = b.next.next;
+            a = a.next;
+        }
+
+        if (b == last)
+            System.out.println(a.value);
+        else
+            System.out.println(a.value + ", " + a.value);
     }
 
     public void print() {
