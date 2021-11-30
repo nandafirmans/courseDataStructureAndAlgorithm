@@ -1,6 +1,5 @@
 package com.nocoffeeneedded;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 // Linked lists are probably the most commonly used data structures after array.

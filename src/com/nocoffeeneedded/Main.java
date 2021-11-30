@@ -61,7 +61,16 @@ public class Main {
         return reversed.toString();
     }
 
+    public static void stack() {
+        // System.out.println(stackReversedList("abcde"));
+        var exp = new Expression();
+        System.out.println(exp.isBalanced("(1+1)"));
+        System.out.println(exp.isBalanced("(1+1"));
+        System.out.println(exp.isBalanced("((1+1)"));
+        System.out.println(exp.isBalanced(")1+1("));
+    }
+
     public static void main(String[] args) {
-        System.out.println(stackReversedList("abcde"));
+        stack();
     }
 }
