@@ -63,11 +63,32 @@ public class Main {
 
     public static void stack() {
         // System.out.println(stackReversedList("abcde"));
-        var exp = new Expression();
-        System.out.println(exp.isBalanced("(1+1)"));
-        System.out.println(exp.isBalanced("(1+1"));
-        System.out.println(exp.isBalanced("((1+1)"));
-        System.out.println(exp.isBalanced(")1+1("));
+        // var exp = new Expression();
+        // System.out.println(exp.isBalanced("(1+1)"));
+        // System.out.println(exp.isBalanced("(1+1"));
+        // System.out.println(exp.isBalanced("((1+1)"));
+        // System.out.println(exp.isBalanced(")1+1("));
+
+        // var myStack = new MyStack();
+        // myStack.push(10);
+        // myStack.push(20);
+        // myStack.push(30);
+        // System.out.println(myStack.peek());
+        // System.out.println(myStack);
+        // myStack.pop();
+        // System.out.println(myStack);
+
+        var stack = new com.nocoffeeneedded.Stack();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        System.out.println(stack.peek());
+        System.out.println(stack);
+        stack.pop();
+        System.out.println(stack);
+        stack.pop();
+        stack.pop();
+        System.out.println(stack.isEmpty());
     }
 
     public static void main(String[] args) {

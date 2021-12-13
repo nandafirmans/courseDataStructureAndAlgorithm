@@ -1,6 +1,7 @@
 package com.nocoffeeneedded;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MyStack {
     private ArrayList<Integer> items;
@@ -12,12 +13,13 @@ public class MyStack {
     }
 
     public void push(int value) {
-        items.add(length, value);
+        items.add(value);
+        length++;
     }
 
-    public int pop() throws Exception {
+    public int pop() {
         if (length <= 0)
-            throw new Exception("please fill stack before pop it");
+            throw new IllegalStateException();
 
         var lastIndex = length - 1;
         var popedValue = items.get(lastIndex);
@@ -27,14 +29,19 @@ public class MyStack {
         return popedValue;
     }
 
-    public int peek() throws Exception {
+    public int peek() {
         if (length <= 0)
-            throw new Exception("please fill stack before pop it");
+            throw new IllegalStateException();
 
         return items.get(length - 1);
     }
 
-    public int size() {
-        return length;
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(items.toArray());
     }
 }
