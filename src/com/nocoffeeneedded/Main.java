@@ -78,7 +78,7 @@ public class Main {
         // myStack.pop();
         // System.out.println(myStack);
 
-        var stack = new com.nocoffeeneedded.Stack();
+        var stack = new com.nocoffeeneedded.Stack(5);
         stack.push(10);
         stack.push(20);
         stack.push(30);

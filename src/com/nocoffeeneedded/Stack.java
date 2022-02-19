@@ -3,8 +3,13 @@ package com.nocoffeeneedded;
 import java.util.Arrays;
 
 public class Stack {
-    private static int[] items = new int[5];
-    private static int count = 0;
+    private static int[] items;
+    private static int count;
+
+    Stack(int size) {
+        items = new int[size];
+        count = 0;
+    }
 
     public void push(int item) {
         if (count == items.length)
@@ -29,6 +34,13 @@ public class Stack {
 
     public boolean isEmpty() {
         return count == 0;
+    }
+
+    public int min() {
+        if (count <= 0)
+            throw new IllegalStateException();
+
+        return Arrays.stream(items).min().getAsInt();
     }
 
     @Override
