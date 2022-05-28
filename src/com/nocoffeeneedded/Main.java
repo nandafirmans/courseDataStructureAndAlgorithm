@@ -1,5 +1,7 @@
 package com.nocoffeeneedded;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
@@ -91,7 +93,48 @@ public class Main {
         System.out.println(stack.isEmpty());
     }
 
+    public static void reverseQueue(Queue<Integer> queue) {
+        Stack<Integer> stack = new Stack<Integer>();
+
+        while (!queue.isEmpty()) {
+            stack.add(queue.remove());
+        }
+
+        while (!stack.isEmpty()) {
+            queue.add(stack.pop());
+        }
+    }
+
+    public static void queue() {
+        // Queue<Integer> queue = new ArrayDeque<>();
+
+        // queue.add(10);
+        // queue.add(20);
+        // queue.add(30);
+        // System.out.println(queue);
+
+        // reverseQueue(queue);
+        // System.out.println(queue);
+
+        var queue = new MyArrayQueue(5);
+
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.dequeue();
+        queue.enqueue(60);
+        queue.enqueue(70);
+        System.out.println("isFull: " + queue.isFull());
+        System.out.println(queue);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        System.out.println(queue);
+        System.out.println("isEmpty: " + queue.isEmpty());
+    }
+
     public static void main(String[] args) {
-        stack();
+        queue();
     }
 }
