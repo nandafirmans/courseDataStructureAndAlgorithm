@@ -1,4 +1,4 @@
-package com.nocoffeeneedded;
+package com.nocoffeeneedded.mySolutions;
 
 public class MyArray {
     private Object[] _items;

@@ -1,4 +1,4 @@
-package com.nocoffeeneedded;
+package com.nocoffeeneedded.mySolutions;
 
 import java.util.ArrayList;
 import java.util.Arrays;

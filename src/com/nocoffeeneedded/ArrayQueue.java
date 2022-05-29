@@ -20,7 +20,19 @@ public class ArrayQueue {
             throw new IllegalStateException();
 
         items[rear] = item;
-        rear = (rear + 1) % items.length; // circular array
+
+        // using modulus operator (%) to implement circular array
+        // so when enqueue happens and the rear pointer already reach endof items index
+        // [0, 0, 50, 30, 60]
+        //        F       R
+        // next time we add items it would be like this: (which is out of bound of items array)
+        // [0, 0, 50, 30, 60]
+        //        F            R
+        // so we need to reset the rear pointer to 0 using this function (Left % Length)
+        // [0, 0, 50, 30, 60]
+        //  R.....F
+        rear = (rear + 1) % items.length;
+
         count++;
     }
 

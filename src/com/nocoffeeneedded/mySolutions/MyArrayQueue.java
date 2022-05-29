@@ -1,16 +1,14 @@
-package com.nocoffeeneedded;
+package com.nocoffeeneedded.mySolutions;
 
 import java.util.Arrays;
 
 public class MyArrayQueue {
     private int[] items;
-    private int size;
     private int count;
     private int front;
     private int rear;
 
-    MyArrayQueue(int size) {
-        this.size = size;
+    public MyArrayQueue(int size) {
         items = new int[size];
         count = 0;
         front = 0;
@@ -18,11 +16,11 @@ public class MyArrayQueue {
     }
 
     public void enqueue(int item) {
-        if (count == size)
+        if (count == items.length)
             throw new IllegalArgumentException();
 
         items[rear] = item;
-        rear = (rear + 1) % size;
+        rear = (rear + 1) % items.length;
         count++;
     }
 
@@ -31,7 +29,8 @@ public class MyArrayQueue {
             throw new IllegalArgumentException();
 
         var removed = items[front];
-        front = (front + 1) % size;
+        items[front] = 0;
+        front = (front + 1) % items.length;
         count--;
 
         return removed;
@@ -46,7 +45,7 @@ public class MyArrayQueue {
     }
 
     public boolean isFull() {
-        return count == size;
+        return count == items.length;
     }
 
     @Override

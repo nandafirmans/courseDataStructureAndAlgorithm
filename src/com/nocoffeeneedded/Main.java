@@ -4,6 +4,9 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
+import com.nocoffeeneedded.mySolutions.MyArrayQueue;
+import com.nocoffeeneedded.mySolutions.MyPriorityQueue;
+
 public class Main {
     public static void array(String[] args) {
         Array numbers2 = new Array(2);
@@ -97,11 +100,13 @@ public class Main {
         Stack<Integer> stack = new Stack<Integer>();
 
         while (!queue.isEmpty()) {
-            stack.add(queue.remove());
+            var item = queue.remove();
+            stack.add(item);
         }
 
         while (!stack.isEmpty()) {
-            queue.add(stack.pop());
+            var item = stack.pop();
+            queue.add(item);
         }
     }
 
@@ -116,22 +121,41 @@ public class Main {
         // reverseQueue(queue);
         // System.out.println(queue);
 
-        var queue = new MyArrayQueue(5);
+        // var queue = new MyArrayQueue(5);
 
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        queue.dequeue();
-        queue.enqueue(60);
-        queue.enqueue(70);
-        System.out.println("isFull: " + queue.isFull());
-        System.out.println(queue);
-        queue.dequeue();
-        queue.dequeue();
-        queue.dequeue();
-        queue.dequeue();
-        System.out.println(queue);
-        System.out.println("isEmpty: " + queue.isEmpty());
+        // queue.enqueue(10);
+        // queue.enqueue(20);
+        // queue.enqueue(30);
+        // queue.dequeue();
+        // queue.enqueue(60);
+        // queue.enqueue(70);
+        // System.out.println("isFull: " + queue.isFull());
+        // System.out.println(queue);
+        // queue.dequeue();
+        // queue.dequeue();
+        // queue.dequeue();
+        // queue.dequeue();
+        // System.out.println(queue);
+        // System.out.println("isEmpty: " + queue.isEmpty());
+
+        // var queue = new QueueWithTwoStacks();
+        // queue.enqueue(10);
+        // queue.enqueue(20);
+        // queue.enqueue(30);
+        // queue.dequeue();
+        // queue.dequeue();
+        // var first = queue.dequeue();
+        // System.out.println(first);
+
+        var queue = new MyPriorityQueue(5);
+        queue.enqueue(2);
+        queue.enqueue(7);
+        queue.enqueue(1);
+        queue.enqueue(6);
+
+        while (!queue.isEmpty()) {
+            System.out.println(queue.dequeue());
+        }
     }
 
     public static void main(String[] args) {
