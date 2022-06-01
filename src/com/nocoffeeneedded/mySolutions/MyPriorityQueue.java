@@ -1,5 +1,7 @@
 package com.nocoffeeneedded.mySolutions;
 
+import java.util.Arrays;
+
 public class MyPriorityQueue {
     private int[] items;
     private int count;
@@ -9,45 +11,29 @@ public class MyPriorityQueue {
         count = 0;
     }
 
-    public void enqueue(int nextItem) {
+    public void add(int item) {
         if (isFull())
-            throw new IllegalArgumentException();
+            throw new IllegalStateException();
 
-        if (isEmpty()) {
-            items[0] = nextItem;
-            count++;
-            return;
-        }
+        int i;
 
-        for (var i = count - 1; i >= 0; i--) {
-            var item = items[i];
-
-            if (nextItem < item) {
-                items[i + 1] = item;
-            } else {
-                items[i + 1] = nextItem;
+        // Shifting items
+        for (i = count - 1; i >= 0; i--) {
+            if (items[i] > item)
+                items[i + 1] = items[i];
+            else
                 break;
-            }
         }
 
+        items[i + 1] = item;
         count++;
     }
 
-    public int dequeue() {
+    public int remove() {
         if (isEmpty())
-            throw new IllegalArgumentException();
+            throw new IllegalStateException();
 
-        var removedItem = items[0];
-
-        for (var i = 1; i <= count; i++) {
-            var item = items[i];
-
-            items[i - 1] = item;
-
-        }
-
-        count--;
-        return removedItem;
+        return items[--count];
     }
 
     public boolean isFull() {
@@ -56,5 +42,10 @@ public class MyPriorityQueue {
 
     public boolean isEmpty() {
         return count == 0;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(items);
     }
 }

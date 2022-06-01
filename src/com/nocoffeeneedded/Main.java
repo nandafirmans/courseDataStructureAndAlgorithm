@@ -148,14 +148,12 @@ public class Main {
         // System.out.println(first);
 
         var queue = new MyPriorityQueue(5);
-        queue.enqueue(2);
-        queue.enqueue(7);
-        queue.enqueue(1);
-        queue.enqueue(6);
+        queue.add(2);
+        queue.add(7);
+        queue.add(1);
+        queue.add(6);
 
-        while (!queue.isEmpty()) {
-            System.out.println(queue.dequeue());
-        }
+        System.out.println(queue.toString());
     }
 
     public static void main(String[] args) {
